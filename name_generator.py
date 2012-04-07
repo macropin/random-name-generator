@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #
-# Generate a unique random names with real world probability weighting of first / lastname
+# Generate (optionally) unique random names with real world probability weighting of first / lastname
 #
 # NB, names are not guaranteed to be unique across male and female generations.
 #
@@ -18,9 +18,7 @@
 
 import os
 import sys
-
 from optparse import OptionParser
-
 from wc import WeightedChoice
 
 
@@ -47,8 +45,29 @@ def parse_data(file_name):
     return data
 
 
+def generate_names(first_wc, last_wc, number, unique_only):
+
+    if unique_only:
+        # Generate Unique Names
+        names = dict()
+        while len(names) < number:
+            first = first_wc.next()
+            last = last_wc.next()
+            names['%s %s' % (first, last)] = None # This seems to be a fast way, to generate uniques using dict
+    else:
+        # Generate non unique names
+        names = []
+        for i in range(number):
+            first = first_wc.next()
+            last = last_wc.next()
+            names.append('%s %s' % (first, last))
+
+    return names
+
+
 def main():
     parser = OptionParser()
+    parser.add_option("-u", "--unique", action="store_true", dest="unique", default=False, help="Generate unique names")
     parser.add_option("-m", "--male", action="store", type="int", dest="num_male", default=0, help="Number of male names")
     parser.add_option("-f", "--female", action="store", type="int", dest="num_fem", default=0, help="Number of female names")
     (options, args) = parser.parse_args()
@@ -68,25 +87,19 @@ def main():
         male_wc = WeightedChoice(male_data);
         last_wc = WeightedChoice(last_data);
 
-        # Generate Unique Female Names
-        output_fem = dict()
-        while len(output_fem) < options.num_fem:
-            first = fem_wc.next()
-            last = last_wc.next()
-            output_fem['%s %s' % (first, last)] = None # This seems to be a fast way, to generate uniques using dict
+        # Generate Female Names
+        if options.num_fem > 0:
+            output_fem = generate_names(fem_wc, last_wc, options.num_fem, options.unique)
 
-        # Generate Unique Male Names
-        output_male = dict()
-        while len(output_male) < options.num_male:
-            first = male_wc.next()
-            last = last_wc.next()
-            output_male['%s %s' % (first, last)] = None
+            for name in output_fem:
+                print name
 
-        for name in output_fem:
-            print name
+        # Generate Male Names
+        if options.num_male > 0:
+            output_male = generate_names(male_wc, last_wc, options.num_male, options.unique)
 
-        for name in output_male:
-            print name
+            for name in output_male:
+                print name
 
 
 if __name__ == '__main__':
