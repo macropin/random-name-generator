@@ -1,4 +1,4 @@
-# Origin of the method below somewhat dubious. Probably in the public domain. - AC
+# Origin of the method below somewhat dubious. Believed to be in the public domain. - AC
 # http://gamedev.stackexchange.com/questions/20881/handling-random-with-unique-chance-in-python
 # http://eli.thegreenplace.net/2010/01/22/weighted-random-generation-in-python/
 # http://stackoverflow.com/questions/4113307/pythonic-way-to-select-list-elements-with-different-probability
