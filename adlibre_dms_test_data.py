@@ -10,9 +10,9 @@ import os
 import random
 from random import shuffle
 
-from rng.functions import parse_data, generate_names
-from rng.wc import WeightedChoice
-from rng.settings import DATA_PATH
+from name_generator.functions import parse_data, generate_names
+from name_generator.wc import WeightedChoice
+from name_generator.settings import DATA_PATH
 
 
 # Config
