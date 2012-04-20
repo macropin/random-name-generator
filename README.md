@@ -13,6 +13,7 @@ Dev:
     pip install -e git+git@github.com:macropin/random-name-generator.git#egg=rng
 
 Prod:
+
     git install git+git@github.com:macropin/random-name-generator.git
 
 -- Andrew Cutler
