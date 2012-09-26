@@ -20,7 +20,7 @@ import sys
 from random import shuffle
 from optparse import OptionParser
 
-from name_generator.functions import parse_data, generate_names
+from name_generator import parse_data, generate_names
 from name_generator.wc import WeightedChoice
 from name_generator.settings import DATA_PATH
 
