@@ -6,7 +6,7 @@ def parse_data(file_path):
         file = open(file_path, 'r')
     except IOError, e:
         print "%s" % e
-        print "Download data files from http://www.census.gov/genealogy/names/names_files.html"
+        print "http://www.census.gov/genealogy/www/data/1990surnames/names_files.html"
         quit()
 
     data = []

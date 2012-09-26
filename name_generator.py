@@ -5,7 +5,7 @@
 #
 # NB, names are not guaranteed to be unique across male and female generations.
 #
-# Data Obtained from http://www.census.gov/genealogy/names/names_files.html
+# Data Obtained from http://www.census.gov/genealogy/www/data/1990surnames/names_files.html
 #
 # Data files used:
 #     data/dist.all.last
