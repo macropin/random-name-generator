@@ -8,11 +8,11 @@ Useful for generating test data for, err testing purposes.
 
 Dev:
 
-    pip install -e git+git@github.com:macropin/random-name-generator.git#egg=rng
+    pip install -e git+https://github.com/macropin/random-name-generator.git#egg=name_generator
 
 Prod:
 
-    git install git+git@github.com:macropin/random-name-generator.git
+    pip install git+https://github.com/macropin/random-name-generator.git
 
 Then download the data set from http://www.census.gov/genealogy/www/data/1990surnames/names_files.html and place the three files, (dist.all.last, dist.female.first, dist.male.first) in ./data.
 
