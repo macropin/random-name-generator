@@ -14,7 +14,7 @@ Prod:
 
     pip install git+https://github.com/macropin/random-name-generator.git
 
-Then download the data set from http://www.census.gov/genealogy/www/data/1990surnames/names_files.html and place the three files, (dist.all.last, dist.female.first, dist.male.first) in ./data.
+Then download the data set from [www2.census.gov/topics/genealogy/1990surnames/](https://www2.census.gov/topics/genealogy/1990surnames/) and place the three files, (`dist.all.last`, `dist.female.first`, `dist.male.first`) in ./data.
 
 ## Usage Examples
 
