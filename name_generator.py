@@ -18,6 +18,7 @@
 import os
 import sys
 from random import shuffle
+from random import choice
 from optparse import OptionParser
 
 from name_generator import parse_data, generate_names
@@ -31,6 +32,8 @@ def main():
     parser.add_option("-u", "--unique", action="store_true", dest="unique", default=False, help="Generate unique names (within a given sex)")
     parser.add_option("-m", "--male", action="store", type="int", dest="num_male", default=0, help="Number of male names")
     parser.add_option("-f", "--female", action="store", type="int", dest="num_fem", default=0, help="Number of female names")
+    parser.add_option("-r", "--random", action="store", type="int", dest="num_rand", default=0, help="Number of random names, regardless of sex.")
+    parser.add_option("-i", "--invert", action="store_true", dest="invert", default=False, help="Print last name first")
     (options, args) = parser.parse_args()
 
     if len(sys.argv) == 1:
@@ -50,15 +53,22 @@ def main():
         male_wc = WeightedChoice(male_data);
         last_wc = WeightedChoice(last_data);
 
+        if options.num_rand > 0:
+            for i in range(options.num_rand):
+                if choice('mf') == 'm':
+                    options.num_male = options.num_male + 1
+                else:
+                    options.num_fem = options.num_fem + 1
+        
         # Generate Female Names
         if options.num_fem > 0:
-            output_fem = generate_names(fem_wc, last_wc, options.num_fem, options.unique)
+            output_fem = generate_names(fem_wc, last_wc, options.num_fem, options.unique, options.invert)
         else:
             output_fem = []
 
         # Generate Male Names
         if options.num_male > 0:
-            output_male = generate_names(male_wc, last_wc, options.num_male, options.unique)
+            output_male = generate_names(male_wc, last_wc, options.num_male, options.unique, options.invert)
         else:
             output_male = []
 

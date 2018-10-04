@@ -20,5 +20,7 @@ Then download the data set from [www2.census.gov/topics/genealogy/1990surnames/]
 
     ./name_generator.py -u -m 10
     ./name_generator.py -m 10 -f 10
+    ./name_generator.py -r 20
+    ./name_generator.py -u -i -r 10
 
 -- Andrew Cutler
