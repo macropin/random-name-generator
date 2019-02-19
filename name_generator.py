@@ -34,6 +34,7 @@ def main():
     parser.add_option("-f", "--female", action="store", type="int", dest="num_fem", default=0, help="Number of female names")
     parser.add_option("-r", "--random", action="store", type="int", dest="num_rand", default=0, help="Number of random names, regardless of sex.")
     parser.add_option("-i", "--invert", action="store_true", dest="invert", default=False, help="Print last name first")
+    parser.add_option("--ucfirst", action="store_true", dest="ucfirst", default=False, help="Print names upper case first instead of all caps.")
     (options, args) = parser.parse_args()
 
     if len(sys.argv) == 1:
@@ -62,13 +63,13 @@ def main():
         
         # Generate Female Names
         if options.num_fem > 0:
-            output_fem = generate_names(fem_wc, last_wc, options.num_fem, options.unique, options.invert)
+            output_fem = generate_names(fem_wc, last_wc, options.num_fem, options.unique, options.invert, options.ucfirst)
         else:
             output_fem = []
 
         # Generate Male Names
         if options.num_male > 0:
-            output_male = generate_names(male_wc, last_wc, options.num_male, options.unique, options.invert)
+            output_male = generate_names(male_wc, last_wc, options.num_male, options.unique, options.invert, options.ucfirst)
         else:
             output_male = []
 

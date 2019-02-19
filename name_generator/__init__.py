@@ -21,7 +21,7 @@ def parse_data(file_path):
     return data
 
 
-def generate_names(first_wc, last_wc, number, unique_only, last_name_first):
+def generate_names(first_wc, last_wc, number, unique_only, last_name_first, uc_first):
 
     if unique_only:
         # Generate Unique Names
@@ -29,6 +29,9 @@ def generate_names(first_wc, last_wc, number, unique_only, last_name_first):
         while len(d) < number:
             first = first_wc.next()
             last = last_wc.next()
+            if uc_first:
+                first = first[0:1].upper() + first[1:].lower()
+                last = last[0:1].upper() + last[1:].lower()
             if last_name_first:
                 d['%s %s' % (last, first)] = None # This seems to be a fast way, to generate uniques using dict
             else:
